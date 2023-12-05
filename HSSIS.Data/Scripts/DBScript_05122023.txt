@@ -1,0 +1,259 @@
+﻿
+/****** Object:  Database [HSSIS_DB]    Script Date: 05-12-2023 21:58:57 ******/
+CREATE DATABASE [HSSIS_DB]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'HSSIS_DB', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER2017\MSSQL\DATA\HSSIS_DB.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'HSSIS_DB_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER2017\MSSQL\DATA\HSSIS_DB_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [HSSIS_DB] SET COMPATIBILITY_LEVEL = 140
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [HSSIS_DB].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [HSSIS_DB] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [HSSIS_DB] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [HSSIS_DB] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [HSSIS_DB] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [HSSIS_DB] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET RECOVERY FULL 
+GO
+ALTER DATABASE [HSSIS_DB] SET  MULTI_USER 
+GO
+ALTER DATABASE [HSSIS_DB] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [HSSIS_DB] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [HSSIS_DB] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [HSSIS_DB] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [HSSIS_DB] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'HSSIS_DB', N'ON'
+GO
+ALTER DATABASE [HSSIS_DB] SET QUERY_STORE = OFF
+GO
+/****** Object:  Table [dbo].[TBL_Master_AssetCategory]    Script Date: 05-12-2023 21:58:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TBL_Master_AssetCategory](
+	[AssetCategoryId] [int] IDENTITY(1,1) NOT NULL,
+	[AssetCategoryName] [varchar](100) NULL,
+	[Description] [nvarchar](500) NULL,
+	[CreatedBy] [int] NULL,
+	[CreatedDate] [datetime] NULL,
+	[UpdatedBy] [int] NULL,
+	[UpdatedDate] [datetime] NULL,
+	[DeleteFlag] [bit] NULL,
+ CONSTRAINT [PK_TBL_Master_AssetCategory] PRIMARY KEY CLUSTERED 
+(
+	[AssetCategoryId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TBL_Master_AssetSubCategory]    Script Date: 05-12-2023 21:58:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TBL_Master_AssetSubCategory](
+	[AssetSubCategoryId] [int] IDENTITY(1,1) NOT NULL,
+	[AssetCategoryId] [int] NULL,
+	[AssetSubCategoryName] [varchar](100) NULL,
+	[Description] [nvarchar](500) NULL,
+	[CreatedBy] [int] NULL,
+	[CreatedDate] [datetime] NULL,
+	[UpdatedBy] [int] NULL,
+	[UpdatedDate] [datetime] NULL,
+	[DeleteFlag] [bit] NULL,
+ CONSTRAINT [PK_TBL_Master_AssetSubCategory] PRIMARY KEY CLUSTERED 
+(
+	[AssetSubCategoryId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[TBL_Master_AssetCategory] ON 
+GO
+INSERT [dbo].[TBL_Master_AssetCategory] ([AssetCategoryId], [AssetCategoryName], [Description], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [DeleteFlag]) VALUES (1, N'Hardware', N'Hardware', NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[TBL_Master_AssetCategory] ([AssetCategoryId], [AssetCategoryName], [Description], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [DeleteFlag]) VALUES (2, N'Software', N'Software', NULL, NULL, NULL, NULL, NULL)
+GO
+SET IDENTITY_INSERT [dbo].[TBL_Master_AssetCategory] OFF
+GO
+SET IDENTITY_INSERT [dbo].[TBL_Master_AssetSubCategory] ON 
+GO
+INSERT [dbo].[TBL_Master_AssetSubCategory] ([AssetSubCategoryId], [AssetCategoryId], [AssetSubCategoryName], [Description], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [DeleteFlag]) VALUES (1, 1, N'Desktop', N'Desktop Computer', NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[TBL_Master_AssetSubCategory] ([AssetSubCategoryId], [AssetCategoryId], [AssetSubCategoryName], [Description], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [DeleteFlag]) VALUES (2, 1, N'Laptop', N'Laptop Computer', NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[TBL_Master_AssetSubCategory] ([AssetSubCategoryId], [AssetCategoryId], [AssetSubCategoryName], [Description], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [DeleteFlag]) VALUES (3, 2, N'Windows10', N'Microsoft Windows', NULL, NULL, NULL, NULL, NULL)
+GO
+SET IDENTITY_INSERT [dbo].[TBL_Master_AssetSubCategory] OFF
+GO
+/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_GetAll]    Script Date: 05-12-2023 21:58:59 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[USP_Master_AssetCategory_GetAll]
+	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    SELECT [AssetCategoryId]
+      ,[AssetCategoryName]
+      ,[Description]
+      ,[CreatedBy]
+      ,[CreatedDate]
+      ,[UpdatedBy]
+      ,[UpdatedDate]
+      ,[DeleteFlag]
+  FROM [dbo].[TBL_Master_AssetCategory]
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_GetById]    Script Date: 05-12-2023 21:58:59 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[USP_Master_AssetCategory_GetById]
+	@AssetCategoryId int	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    SELECT [AssetCategoryId]
+      ,[AssetCategoryName]
+      ,[Description]
+      ,[CreatedBy]
+      ,[CreatedDate]
+      ,[UpdatedBy]
+      ,[UpdatedDate]
+      ,[DeleteFlag]
+  FROM [dbo].[TBL_Master_AssetCategory]
+  WHERE [AssetCategoryId]=@AssetCategoryId;
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_GetByName]    Script Date: 05-12-2023 21:58:59 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[USP_Master_AssetCategory_GetByName]
+	@AssetCategoryName varchar(100)	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    SELECT [AssetCategoryId]
+      ,[AssetCategoryName]
+      ,[Description]
+      ,[CreatedBy]
+      ,[CreatedDate]
+      ,[UpdatedBy]
+      ,[UpdatedDate]
+      ,[DeleteFlag]
+  FROM [dbo].[TBL_Master_AssetCategory]
+  WHERE [AssetCategoryName]=@AssetCategoryName;
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[USP_Master_AssetSubCategory_GetAll]    Script Date: 05-12-2023 21:58:59 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[USP_Master_AssetSubCategory_GetAll] 
+	@AssetCategoryId INT
+AS
+BEGIN	
+	SET NOCOUNT ON;
+
+	SELECT [TBL_Master_AssetSubCategory].[AssetSubCategoryId]
+      ,[TBL_Master_AssetSubCategory].[AssetCategoryId]
+      ,[TBL_Master_AssetSubCategory].[AssetSubCategoryName]
+      ,[TBL_Master_AssetSubCategory].[Description]
+      ,[TBL_Master_AssetSubCategory].[CreatedBy]
+      ,[TBL_Master_AssetSubCategory].[CreatedDate]
+      ,[TBL_Master_AssetSubCategory].[UpdatedBy]
+      ,[TBL_Master_AssetSubCategory].[UpdatedDate]
+      ,[TBL_Master_AssetSubCategory].[DeleteFlag]
+	  ,[TBL_Master_AssetCategory].AssetCategoryName
+	 FROM [dbo].[TBL_Master_AssetSubCategory]
+	 INNER JOIN [dbo].[TBL_Master_AssetCategory] ON [TBL_Master_AssetSubCategory].[AssetCategoryId]=[TBL_Master_AssetCategory].[AssetCategoryId]
+	 WHERE (@AssetCategoryId=0 OR (@AssetCategoryId!=0 AND [TBL_Master_AssetSubCategory].[AssetCategoryId]=@AssetCategoryId));
+
+END
+GO
+ALTER DATABASE [HSSIS_DB] SET  READ_WRITE 
+GO

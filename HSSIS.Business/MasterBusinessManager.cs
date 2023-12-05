@@ -15,18 +15,22 @@ namespace HSSIS.Business
 {
     public class MasterBusinessManager : BusinessManagerBase, IMasterBusinessManager
     {
+        #region Constructor
         public MasterBusinessManager(IAssetCategoryRepository assetCategoryRepository,IAssetSubCategoryRepository assetSubCategoryRepository)
         {
-            base.assetCategoryRepository = assetCategoryRepository;
-            base.assetSubCategoryRepository = assetSubCategoryRepository;
+            base.AssetCategoryRepository = assetCategoryRepository;
+            base.AssetSubCategoryRepository = assetSubCategoryRepository;
         }
+        #endregion
+
+        #region Asset Category
 
         public async Task<HttpResponseViewModel<IList<AssetCategoryModel>>> GetAllAssetCategories()
         {
             HttpResponseViewModel<IList<AssetCategoryModel>> response = new HttpResponseViewModel<IList<AssetCategoryModel>>();
             try
             {
-                response.Result= await base.assetCategoryRepository.GetAllAssetCategories();
+                response.Result= await base.AssetCategoryRepository.GetAllAssetCategories();
             }
             catch (Exception ex)
             {
@@ -35,12 +39,12 @@ namespace HSSIS.Business
             return response;    
         }
 
-        public async Task<HttpResponseViewModel<IList<AssetSubCategoryViewModel>>> GetAllAssetSubCategories(int assetCategoryId)
+        public async Task<HttpResponseViewModel<AssetCategoryModel>> GetAssetCategoryById(int assetCategoryId)
         {
-            HttpResponseViewModel<IList<AssetSubCategoryViewModel>> response = new HttpResponseViewModel<IList<AssetSubCategoryViewModel>>();
+            HttpResponseViewModel<AssetCategoryModel> response = new HttpResponseViewModel<AssetCategoryModel>();
             try
             {
-                response.Result = await base.assetSubCategoryRepository.GetAllAssetSubCategories(assetCategoryId);
+                response.Result = await base.AssetCategoryRepository.GetAssetCategoryById(assetCategoryId);
             }
             catch (Exception ex)
             {
@@ -48,5 +52,40 @@ namespace HSSIS.Business
             }
             return response;
         }
+
+        public async Task<HttpResponseViewModel<AssetCategoryModel>> GetAssetCategoryByName(string assetCategoryName)
+        {
+            HttpResponseViewModel<AssetCategoryModel> response = new HttpResponseViewModel<AssetCategoryModel>();
+            try
+            {
+                response.Result = await base.AssetCategoryRepository.GetAssetCategoryByName(assetCategoryName);
+            }
+            catch (Exception ex)
+            {
+                base.HandleException(ex, response);
+            }
+            return response;
+        }
+        #endregion
+
+        #region Asset Sub Category
+
+        
+        public async Task<HttpResponseViewModel<IList<AssetSubCategoryViewModel>>> GetAllAssetSubCategories(int assetCategoryId)
+        {
+            HttpResponseViewModel<IList<AssetSubCategoryViewModel>> response = new HttpResponseViewModel<IList<AssetSubCategoryViewModel>>();
+            try
+            {
+                response.Result = await base.AssetSubCategoryRepository.GetAllAssetSubCategories(assetCategoryId);
+            }
+            catch (Exception ex)
+            {
+                base.HandleException(ex, response);
+            }
+            return response;
+        }
+
+        #endregion
+
     }
 }

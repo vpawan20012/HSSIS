@@ -1,0 +1,6 @@
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng g c modules/base --module app.module
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng generate module modules/shared   
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng generate module modules/master
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng g c modules/shared/header  
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng g c modules/shared/footer 
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng generate service services/app-services/master-data/master-data

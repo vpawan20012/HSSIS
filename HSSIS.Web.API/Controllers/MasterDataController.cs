@@ -16,10 +16,13 @@ namespace HSSIS.Web.API.Controllers
     {
         private readonly IMasterBusinessManager masterBusinessManager;
 
-        public MasterDataController(IAssetCategoryRepository assetCategoryRepository,IAssetSubCategoryRepository assetSubCategoryRepository)
+        public MasterDataController(IAssetCategoryRepository assetCategoryRepository, IAssetSubCategoryRepository assetSubCategoryRepository)
         {
-            this.masterBusinessManager=new MasterBusinessManager(assetCategoryRepository,assetSubCategoryRepository);   
+            this.masterBusinessManager = new MasterBusinessManager(assetCategoryRepository, assetSubCategoryRepository);
         }
+
+        #region Asset Category
+
 
         [HttpGet]
         [Route("GetAllAssetCategories")]
@@ -29,11 +32,31 @@ namespace HSSIS.Web.API.Controllers
         }
 
         [HttpGet]
+        [Route("GetAssetCategoryByName/{assetCategoryName}")]
+        public async Task<ActionResult<HttpResponseViewModel<AssetCategoryModel>>> GetAssetCategoryByName(string assetCategoryName)
+        {
+            return await this.masterBusinessManager.GetAssetCategoryByName(assetCategoryName);
+        }
+
+        [HttpGet]
+        [Route("GetAssetCategoryById/{assetCategoryId}")]
+        public async Task<ActionResult<HttpResponseViewModel<AssetCategoryModel>>> GetAssetCategoryById(int assetCategoryId)
+        {
+            return await this.masterBusinessManager.GetAssetCategoryById(assetCategoryId);
+        }
+        #endregion
+
+        #region Asset Sub Category
+
+
+        [HttpGet]
         [Route("GetAllAssetSubCategories/{assetCategoryId}")]
         public async Task<ActionResult<HttpResponseViewModel<IList<AssetSubCategoryViewModel>>>> GetAllAssetSubCategories(int assetCategoryId)
         {
             return await this.masterBusinessManager.GetAllAssetSubCategories(assetCategoryId);
         }
+
+        #endregion
 
         [HttpGet]
         [Route("Test")]

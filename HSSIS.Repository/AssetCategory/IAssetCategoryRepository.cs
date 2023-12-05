@@ -11,5 +11,7 @@ namespace HSSIS.Repository.AssetCategory
     public interface IAssetCategoryRepository
     {
         Task<IList<AssetCategoryModel>> GetAllAssetCategories();  
+        Task<AssetCategoryModel> GetAssetCategoryById(int assetCategoryId);
+        Task<AssetCategoryModel> GetAssetCategoryByName(string assetCategoryName);
     }
 }

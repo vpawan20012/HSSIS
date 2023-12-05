@@ -6,8 +6,8 @@ using HSSIS.Repository.AssetSubCategory;
 namespace HSSIS.Business;
 public class BusinessManagerBase
 {
-    protected IAssetCategoryRepository assetCategoryRepository;
-    protected IAssetSubCategoryRepository assetSubCategoryRepository;
+    protected IAssetCategoryRepository AssetCategoryRepository { get; set; }
+    protected IAssetSubCategoryRepository AssetSubCategoryRepository { get; set; }
 
     protected void HandleException(Exception ex, IHttpResponseViewModel response)
     {

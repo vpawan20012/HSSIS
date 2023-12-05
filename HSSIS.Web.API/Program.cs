@@ -15,14 +15,15 @@ builder.Services.AddDbContext<HSSIS_DBContext>(options => options.UseSqlServer(b
 builder.Services.AddScoped<IAssetCategoryRepository, AssetCategoryRepository>();
 builder.Services.AddScoped<IAssetSubCategoryRepository, AssetSubCategoryRepository>();
 
-//builder.Services.AddCors(options => options.AddPolicy("CorePolicy_Development", builder =>
-//{
-//    builder.WithOrigins("*")
-//            //WithOrigins("http://localhost:4200")
-//           .AllowAnyMethod()
-//           .AllowAnyHeader()
-//           .AllowCredentials();
-//}));
+builder.Services.AddCors(options => options.AddPolicy("CorePolicy_Development", builder =>
+{
+    builder//.WithOrigins("*")
+           //.WithOrigins("http://localhost:4200")
+           .AllowAnyMethod()
+           .AllowAnyHeader()
+           .SetIsOriginAllowed(origin => true)
+           .AllowCredentials();
+}));
 
 var app = builder.Build();
 
@@ -33,7 +34,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseCors("CorePolicy_Development");
+app.UseCors("CorePolicy_Development");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
