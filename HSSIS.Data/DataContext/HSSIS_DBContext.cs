@@ -17,8 +17,8 @@ namespace HSSIS.Data.DataContext
         {
         }
 
-        public virtual DbSet<AssetCategoryModel> TblMasterAssetCategories { get; set; } = null!;
-        public virtual DbSet<AssetSubCategoryModel> TblMasterAssetSubCategories { get; set; } = null!;
+        public virtual DbSet<AssetCategoryModel> MasterAssetCategories { get; set; } = null!;
+        public virtual DbSet<AssetSubCategoryModel> MasterAssetSubCategories { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -74,5 +74,11 @@ namespace HSSIS.Data.DataContext
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        {
+            base.ConfigureConventions(configurationBuilder);
+            configurationBuilder.DefaultTypeMapping<AssetCategoryModel>();
+        }
     }
 }

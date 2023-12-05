@@ -1,5 +1,6 @@
 using HSSIS.Data.DataContext;
 using HSSIS.Repository.AssetCategory;
+using HSSIS.Repository.AssetSubCategory;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<HSSIS_DBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IAssetCategoryRepository, AssetCategoryRepository>();
+builder.Services.AddScoped<IAssetSubCategoryRepository, AssetSubCategoryRepository>();
 
 //builder.Services.AddCors(options => options.AddPolicy("CorePolicy_Development", builder =>
 //{
@@ -37,5 +39,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+//app.UseRouting();
 
 app.Run();

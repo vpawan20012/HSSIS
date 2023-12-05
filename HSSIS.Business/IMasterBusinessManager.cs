@@ -11,6 +11,7 @@ namespace HSSIS.Business
 {
     public interface IMasterBusinessManager
     {
-       Task<HttpResponseViewModel<IList<AssetCategoryModel>>> GetAllAssetCategories();
+        Task<HttpResponseViewModel<IList<AssetCategoryModel>>> GetAllAssetCategories();
+        Task<HttpResponseViewModel<IList<AssetSubCategoryViewModel>>> GetAllAssetSubCategories(int assetCategoryId);
     }
 }

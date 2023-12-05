@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HSSIS.Models.ViewModels;
 
 namespace HSSIS.Repository.AssetCategory
 {
@@ -20,7 +21,9 @@ namespace HSSIS.Repository.AssetCategory
         public async Task<IList<AssetCategoryModel>> GetAllAssetCategories()
         {
             FormattableString query = $"exec USP_Master_AssetCategory_GetAll";
-            return await _dbContext.TblMasterAssetCategories.FromSqlInterpolated<AssetCategoryModel>(query).ToListAsync();
+            //return await _dbContext.MasterAssetCategories.FromSqlInterpolated<AssetCategoryModel>(query).ToListAsync();
+            return await _dbContext.Database.SqlQueryRaw<AssetCategoryModel>(query.Format).ToListAsync();
+            
         }
     }
 }

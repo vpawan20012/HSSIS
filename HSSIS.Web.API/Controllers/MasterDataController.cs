@@ -3,6 +3,7 @@ using HSSIS.Data.DataContext;
 using HSSIS.Models.DataModels;
 using HSSIS.Models.ViewModels;
 using HSSIS.Repository.AssetCategory;
+using HSSIS.Repository.AssetSubCategory;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -13,19 +14,25 @@ namespace HSSIS.Web.API.Controllers
     [ApiController]
     public class MasterDataController : BaseController
     {
-        private readonly IAssetCategoryRepository _assetCategoryRepository;
+        private readonly IMasterBusinessManager masterBusinessManager;
 
-        public MasterDataController(IAssetCategoryRepository assetCategoryRepository)
+        public MasterDataController(IAssetCategoryRepository assetCategoryRepository,IAssetSubCategoryRepository assetSubCategoryRepository)
         {
-            this._assetCategoryRepository = assetCategoryRepository;
+            this.masterBusinessManager=new MasterBusinessManager(assetCategoryRepository,assetSubCategoryRepository);   
         }
 
         [HttpGet]
         [Route("GetAllAssetCategories")]
         public async Task<ActionResult<HttpResponseViewModel<IList<AssetCategoryModel>>>> GetAllAssetCategories()
         {
-            //return Ok(new List<TblMasterAssetCategory>());  
-            return Ok(await new MasterBusinessManager(this._assetCategoryRepository).GetAllAssetCategories());
+            return await this.masterBusinessManager.GetAllAssetCategories();
+        }
+
+        [HttpGet]
+        [Route("GetAllAssetSubCategories/{assetCategoryId}")]
+        public async Task<ActionResult<HttpResponseViewModel<IList<AssetSubCategoryViewModel>>>> GetAllAssetSubCategories(int assetCategoryId)
+        {
+            return await this.masterBusinessManager.GetAllAssetSubCategories(assetCategoryId);
         }
 
         [HttpGet]

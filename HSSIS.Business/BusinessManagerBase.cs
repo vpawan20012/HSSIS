@@ -1,11 +1,13 @@
 ﻿using HSSIS.Core.Enums;
 using HSSIS.Models.ViewModels;
 using HSSIS.Repository.AssetCategory;
+using HSSIS.Repository.AssetSubCategory;
 
 namespace HSSIS.Business;
 public class BusinessManagerBase
 {
     protected IAssetCategoryRepository assetCategoryRepository;
+    protected IAssetSubCategoryRepository assetSubCategoryRepository;
 
     protected void HandleException(Exception ex, IHttpResponseViewModel response)
     {

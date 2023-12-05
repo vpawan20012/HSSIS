@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext 'Data Source=PAWANKJANGID;Initial Catalog=HSSIS_DB;User ID=sa;Password=sql;TrustServerCertificate=true' Microsoft.EntityFrameworkCore.SqlServer -OutputDir DataContext -StartupProject HSSIS.Data -Force
