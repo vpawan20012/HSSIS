@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HSSIS.Core\HSSIS.Core.csproj" />
+    <ProjectReference Include="..\HSSIS.Data\HSSIS.Data.csproj" />
+    <ProjectReference Include="..\HSSIS.Models\HSSIS.Models.csproj" />
+    <ProjectReference Include="..\HSSIS.Repository\HSSIS.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

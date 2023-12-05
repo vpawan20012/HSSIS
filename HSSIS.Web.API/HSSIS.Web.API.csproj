@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HSSIS.Business\HSSIS.Business.csproj" />
+    <ProjectReference Include="..\HSSIS.Core\HSSIS.Core.csproj" />
+    <ProjectReference Include="..\HSSIS.Data\HSSIS.Data.csproj" />
+    <ProjectReference Include="..\HSSIS.Models\HSSIS.Models.csproj" />
+    <ProjectReference Include="..\HSSIS.Repository\HSSIS.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
