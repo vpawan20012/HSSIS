@@ -1,5 +1,6 @@
 ﻿using HSSIS.Data.DataContext;
 using HSSIS.Models.DataModels;
+using HSSIS.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace HSSIS.Business
 {
     public interface IMasterBusinessManager
     {
-       Task<IList<AssetCategoryModel>> GetAllAssetCategories();
+       Task<HttpResponseViewModel<IList<AssetCategoryModel>>> GetAllAssetCategories();
     }
 }

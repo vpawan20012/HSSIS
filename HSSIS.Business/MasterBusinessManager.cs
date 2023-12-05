@@ -1,5 +1,7 @@
-﻿using HSSIS.Data.DataContext;
+﻿using Azure;
+using HSSIS.Data.DataContext;
 using HSSIS.Models.DataModels;
+using HSSIS.Models.ViewModels;
 using HSSIS.Repository.AssetCategory;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
@@ -14,19 +16,21 @@ namespace HSSIS.Business
     {
         public MasterBusinessManager(IAssetCategoryRepository assetCategoryRepository)
         {
-            base.assetCategoryRepository=assetCategoryRepository;
+            base.assetCategoryRepository = assetCategoryRepository;
         }
 
-        public async Task<IList<AssetCategoryModel>> GetAllAssetCategories()
+        public async Task<HttpResponseViewModel<IList<AssetCategoryModel>>> GetAllAssetCategories()
         {
+            HttpResponseViewModel<IList<AssetCategoryModel>> response = new HttpResponseViewModel<IList<AssetCategoryModel>>();
             try
             {
-                return await base.assetCategoryRepository.GetAllAssetCategories();    
+                response.Result= await base.assetCategoryRepository.GetAllAssetCategories();
             }
             catch (Exception ex)
             {
-                throw;
+                base.HandleException(ex,response);
             }
+            return response;    
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HSSIS.Models.Base
 {
-    internal class BaseViewModel:BaseModel
+    public class BaseViewModel:BaseModel
     {
         
     }
