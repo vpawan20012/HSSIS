@@ -10,8 +10,12 @@ namespace HSSIS.Repository.AssetCategory
 {
     public interface IAssetCategoryRepository
     {
-        Task<IList<AssetCategoryModel>> GetAllAssetCategories();  
+        Task<IList<AssetCategoryModel>> GetAllAssetCategories(bool showDeactivated);  
         Task<AssetCategoryModel> GetAssetCategoryById(int assetCategoryId);
-        Task<AssetCategoryModel> GetAssetCategoryByName(string assetCategoryName);
+        AssetCategoryModel GetAssetCategoryByName(string assetCategoryName);
+        Task<int> AddAssetCategory(AssetCategoryModel assetCategory);
+        Task<int> UpdateAssetCategory(AssetCategoryModel assetCategory);
+        Task<int> DeactivateAssetCategory(AssetCategoryModel assetCategory);
+        Task<int> ActivateAssetCategory(AssetCategoryModel assetCategory);
     }
 }

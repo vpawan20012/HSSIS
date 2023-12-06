@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>
+    <div class="dialog-title-text">
+        Add Asset Category</div>
+    <div class="dialog-title-command">
+        <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+        </button>
+    </div>
+    <div style="clear: both;"></div>
+</h1>
+<form [formGroup]="newAssetCategoryForm" (ngSubmit)="onSaveAssetCategory(newAssetCategoryForm)">
+    <mat-dialog-content>
+        <div>
+            <mat-form-field class="form-field-full-width">
+                <mat-label>Asset Category Name</mat-label>
+                <input matInput formControlName="AssetCategoryName" placeholder="Asset Category Name (Max Length=100)" cdkFocusInitial>
+            </mat-form-field>
+            <mat-error>
+                <span
+                    *ngIf="!newAssetCategoryForm.get('AssetCategoryName')?.valid && newAssetCategoryForm.get('AssetCategoryName')?.touched">
+                    <span *ngIf="newAssetCategoryForm.controls['AssetCategoryName'].errors?.['required']">
+                        Please enter the AssetCategoryName
+                    </span>
+                    <span *ngIf="newAssetCategoryForm.controls['AssetCategoryName'].errors?.['maxlength']">
+                        Maximum length of AssetCategoryName is 100 characters
+                    </span>
+                </span>
+            </mat-error>
+        </div>
+        <div>
+            <mat-form-field class="form-field-full-width">
+                <mat-label>Description</mat-label>                
+                <textarea matInput formControlName="Description" placeholder="Remarks (Max 500 characters)"></textarea>
+            </mat-form-field>
+            <span class="textarea-input-status" *ngIf="newAssetCategoryForm.get('Description')?.value!=null">
+                {{newAssetCategoryForm.get('Description')?.value?.length}} characters of 500
+            </span>
+            <mat-error>
+                <span
+                    *ngIf="!newAssetCategoryForm.get('Description')?.valid && newAssetCategoryForm.get('Description')?.touched">
+                    <span *ngIf="newAssetCategoryForm.controls['Description'].errors?.['required']">
+                        Please enter the Description
+                    </span>
+                    <span *ngIf="newAssetCategoryForm.controls['Description'].errors?.['maxlength']">
+                        Maximum length of Description is 500 characters
+                    </span>
+                </span>
+            </mat-error>
+        </div>
+    </mat-dialog-content>
+    <div mat-dialog-actions style="float:right;">
+        <button mat-raised-button color="primary" [disabled]="!newAssetCategoryForm.valid">Submit</button>
+        <button mat-raised-button color="warn" [mat-dialog-close]="true">Cancel</button>
+    </div>
+</form>

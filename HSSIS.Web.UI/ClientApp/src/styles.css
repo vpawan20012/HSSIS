@@ -1,3 +1,4 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
@@ -17,4 +18,431 @@ code {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+.grid-edit-icon {
+  font-size: 18px;
+  color: blue;
+  cursor: pointer;
+}
+
+.grid-delete-icon {
+  font-size: 18px;
+  color: red;
+  cursor: pointer;
+}
+
+.grid-activate-icon {
+  font-size: 18px;
+  color: green;
+  cursor: pointer
+}
+
+.mat-dialog-title {
+  background-color: #e1e8f3 !important;
+  padding: 10px 10px 0px 10px;
+  border-bottom: solid 1px #ccc;
+}
+
+.mat-dialog-title .dialog-title-text {
+  float: left !important;
+}
+.mat-dialog-title .dialog-title-loader {
+  float: left !important;
+  margin-left: 15px;
+  width: 50px;
+}
+.mat-dialog-title .dialog-title-command {
+  float: right !important;
+}
+
+
+.mat-dialog-title .dialog-title-command .close-button {
+  float: right;
+  top: -10px;
+  right: -10px;
+}
+
+.mat-dialog-title .dialog-title-command .close-icon {
+  transition: 1s ease-in-out;
+}
+
+.mat-dialog-title .dialog-title-command .close-icon:hover {
+  transform: rotate(180deg);
+}
+
+.form-field-full-width {
+  width: 100%;
+}
+
+.textarea-input-status {
+  font-size: 10pt;
+  font-style: italic;
+}
+
+.swal2-html-container .message-details {
+  height: 100px;
+  overflow: auto;
+  border: solid 1px #ccc;
+  font-size: 10px;
+  color: red;
+  text-align: left;
+}
+
+.grid-no-record-found-message {
+  padding: 10px;
+}
+
+.grid-no-record-found-message-icon {
+  color: orange;
+  padding-top: 5px;
+}
+
+.content-wrapper {
+  background-color: #e1e8f3 !important;
+}
+
+.main-header {
+  background-color: #158CBA !important;
+  color: #fff;
+}
+
+.page-header {
+  background-color: #e1e8f3 !important;
+  color: #fff;
+}
+
+.mat-dialog-container {
+  padding: 0px !important;
+}
+
+.mat-dialog-container .mat-dialog-content {
+  margin: 10px !important;
+  overflow: auto;
+}
+
+.mat-dialog-actions {
+  float: right;
+  margin-right: 10px!important;
+  margin-bottom: 5px!important;
+  padding: 0px!important;  
+}
+
+::ng-deep .icon-outside .mat-dialog-container {
+  overflow: unset
+}
+
+.warning-dialog {
+  z-index: 1200 !important;
+}
+
+.cdk-overlay-container {
+  z-index: 1500 !important;
+}
+
+.form-field-full-width {
+  width: 100%;
+}
+
+.swal2-container {
+  z-index: 2000 !important;
+}
+
+.mat-simple-snackbar {
+  font-size: 1.2em;
+  color: white;
+}
+
+.snackbar-error {
+  background-color: red;
+}
+
+.snackbar-success {
+  background-color: green;
+}
+
+.snackbar-info {
+  background-color: blue;
+}
+
+.snackbar-warn {
+  background-color: orange;
+}
+
+.show-deactivated-section {
+  margin: 0px 10px;
+  font-size: small;
+  font-weight: 100;
+}
+
+.page-filter-section {
+  margin: 0px 10px;
+  font-size: small;
+  font-weight: 100;
+}
+
+table {
+  width: 100%;
+}
+
+.content-spacer {
+  flex: 1 1 auto;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.pull-left {
+  float: left !important;
+}
+
+.border-solid-gray {
+  border: solid 1px #ccc;
+}
+
+.border-solid-gray-round {
+  border: solid 1px #ccc;
+  border-radius: 5px;
+}
+
+.swal2-html-container .message-details {
+  height: 100px;
+  overflow: auto;
+  border: solid 1px #ccc;
+  font-size: 10px;
+  color: red;
+  text-align: left;
+}
+
+.left-menu-item-icon {
+  font-size: 16px !important;
+  padding-right: 5px;
+}
+
+.left-menu-item-text {
+  padding-top: 3px;
+}
+
+.mat-list-item {
+  font-size: 14px !important;
+  height: 40px !important;
+}
+
+.mat-expansion-panel-header {
+  font-size: 14px !important;
+  height: 40px !important;
+  padding: 0 16px !important;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+  font-size: 14px !important;
+  height: 40px !important;
+
+}
+
+.ml-small {
+  margin-left: 5px!important;
+}
+
+.mr-small {
+  margin-right: 5px!important;
+}
+
+.mt-small {
+  margin-top: 5px!important;
+}
+
+.mb-small {
+  margin-bottom: 5px!important;
+}
+
+.m-small {
+  margin: 5px!important;
+}
+
+.ml-medium {
+  margin-left: 10px!important;
+}
+
+.mr-medium {
+  margin-right: 10px!important;
+}
+
+.mt-medium {
+  margin-top: 10px!important;
+}
+
+.mb-medium {
+  margin-bottom: 10px!important;
+}
+
+.m-medium {
+  margin: 10px!important;
+}
+
+.ml-large {
+  margin-left: 15px!important;
+}
+
+.mr-large {
+  margin-right: 15px!important;
+}
+
+.mt-large {
+  margin-top: 15px!important;
+}
+
+.mb-large {
+  margin-bottom: 15px!important;
+}
+
+.m-large {
+  margin: 15px!important;
+}
+
+.pl-small {
+  padding-left: 5px;
+}
+
+.pr-small {
+  padding-right: 5px;
+}
+
+.pt-small {
+  padding-top: 5px;
+}
+
+.pb-small {
+  padding-bottom: 5px;
+}
+
+.p-small {
+  padding: 5px;
+}
+
+.pl-medium {
+  padding-left: 10px;
+}
+
+.pr-medium {
+  padding-right: 10px;
+}
+
+.pt-medium {
+  padding-top: 10px;
+}
+
+.pb-medium {
+  padding-bottom: 10px;
+}
+
+.p-medium {
+  padding: 10px;
+}
+
+.pl-large {
+  padding-left: 15px;
+}
+
+.pr-large {
+  padding-right: 15px;
+}
+
+.pt-large {
+  padding-top: 15px;
+}
+
+.pb-large {
+  padding-bottom: 15px;
+}
+
+.p-large {
+  padding: 15px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.grid-no-record-found-message {
+  padding: 10px;
+}
+
+.grid-no-record-found-message-icon {
+  color: orange;
+  padding-top: 5px;
+}
+
+.mat-list-base .mat-list-option .mat-list-item-content {
+  padding: 0 0px !important;
+}
+
+.textarea-input-status {
+  font-size: 10pt;
+  font-style: italic;
+}
+
+.clear-float {
+  clear: both;
+}
+
+.fl{
+  float:left;
+}
+.fr{
+  float:right;
+}
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.input-container-left {
+  float: left;
+  width: 49%;
+}
+
+.input-container-right {
+  float: right;
+  width: 49%;
+}
+
+.dashboard-widget
+{
+display: block;
+}
+
+.dashboard-widget .widget-header
+{
+  display: block;
+}
+
+.dashboard-widget .widget-header .widget-header-icon
+{
+  float: left;
+  width: 30px;
+}
+
+.dashboard-widget .widget-header .widget-header-title
+{
+  float: left;
+}
+
+.dashboard-widget .widget-header .widget-header-action
+{
+ float: right; 
+ width: 10px;
+ cursor: pointer;
+}
+
+.dashboard-widget .widget-body
+{
+  display: block;
+}
+
+.dashboard-widget .widget-footer
+{
+  display: block;
 }

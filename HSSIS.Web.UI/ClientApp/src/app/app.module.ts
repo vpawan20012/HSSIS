@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -11,6 +11,13 @@ import { HomeComponent } from './home/home.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { BaseComponent } from './modules/base/base.component';
 import { SharedModule } from './modules/shared/shared.module';
+import { AssetCategoryComponent } from './modules/master/asset-category/asset-category.component';
+import { AngularMaterialModule } from './angular.material.module';
+import { AppRoutingModule } from './app-routing.module';
+import { MasterModule } from './modules/master/master.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpErrorInterceptor } from './_helpers/http-error-interceptor';
+import { HttpProgressInterceptor } from './_helpers/http-progress-interceptor';
 
 @NgModule({
   declarations: [
@@ -23,16 +30,18 @@ import { SharedModule } from './modules/shared/shared.module';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,    
+    HttpClientModule,   
+    BrowserAnimationsModule, 
     FormsModule,
+    MasterModule,
     SharedModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      //{ path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [    
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpProgressInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

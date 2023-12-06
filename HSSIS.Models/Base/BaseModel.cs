@@ -14,5 +14,9 @@ namespace HSSIS.Models.Base
         public int? CreatedBy { get; set; }
         public int? UpdatedBy { get; set; }
         public bool? DeleteFlag { get; set; }
+
+        public bool IsActive { get {
+                return !this.DeleteFlag.HasValue || (this.DeleteFlag.HasValue && !this.DeleteFlag.Value);
+            } }
     }
 }

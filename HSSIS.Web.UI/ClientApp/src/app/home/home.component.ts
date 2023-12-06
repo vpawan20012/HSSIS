@@ -9,13 +9,13 @@ export class HomeComponent {
 
   }
   ngOnInit(): void {
-    this.masterDataService.getAllAssetCategories().subscribe(
-      {
-        next: (response) => { 
-          console.log(response);
-        },
-        error: (error) => { }
-      });
+    // this.masterDataService.getAllAssetCategories().subscribe(
+    //   {
+    //     next: (response) => { 
+    //       console.log(response);
+    //     },
+    //     error: (error) => { }
+    //   });
   }
 }
 

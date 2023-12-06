@@ -4,3 +4,12 @@ PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng generate module mo
 PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng g c modules/shared/header  
 PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng g c modules/shared/footer 
 PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng generate service services/app-services/master-data/master-data
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> npm install --save @angular/material@14.1.3
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng g c modules/master/asset-category
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng generate module angular.material --flat
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng generate module app-routing --flat  
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng g c modules/master/asset-category/asset-category-add
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng g c modules/master/asset-category/asset-category-edit
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> npm install sweetalert2
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng generate service services/core-services/message-service/message  
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng generate service services/core-services/progress-indicator-service/progress.indicator 

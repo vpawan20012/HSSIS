@@ -1,5 +1,4 @@
-﻿
-/****** Object:  Database [HSSIS_DB]    Script Date: 05-12-2023 21:58:57 ******/
+﻿/****** Object:  Database [HSSIS_DB]    Script Date: 06-12-2023 23:41:17 ******/
 CREATE DATABASE [HSSIS_DB]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -76,7 +75,7 @@ EXEC sys.sp_db_vardecimal_storage_format N'HSSIS_DB', N'ON'
 GO
 ALTER DATABASE [HSSIS_DB] SET QUERY_STORE = OFF
 GO
-/****** Object:  Table [dbo].[TBL_Master_AssetCategory]    Script Date: 05-12-2023 21:58:57 ******/
+/****** Object:  Table [dbo].[TBL_Master_AssetCategory]    Script Date: 06-12-2023 23:41:18 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -96,7 +95,7 @@ CREATE TABLE [dbo].[TBL_Master_AssetCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TBL_Master_AssetSubCategory]    Script Date: 05-12-2023 21:58:58 ******/
+/****** Object:  Table [dbo].[TBL_Master_AssetSubCategory]    Script Date: 06-12-2023 23:41:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -123,6 +122,12 @@ INSERT [dbo].[TBL_Master_AssetCategory] ([AssetCategoryId], [AssetCategoryName],
 GO
 INSERT [dbo].[TBL_Master_AssetCategory] ([AssetCategoryId], [AssetCategoryName], [Description], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [DeleteFlag]) VALUES (2, N'Software', N'Software', NULL, NULL, NULL, NULL, NULL)
 GO
+INSERT [dbo].[TBL_Master_AssetCategory] ([AssetCategoryId], [AssetCategoryName], [Description], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [DeleteFlag]) VALUES (3, N'Furniture', N'Furniture', 0, CAST(N'2023-12-06T17:19:17.467' AS DateTime), 0, CAST(N'2023-12-06T23:37:26.953' AS DateTime), NULL)
+GO
+INSERT [dbo].[TBL_Master_AssetCategory] ([AssetCategoryId], [AssetCategoryName], [Description], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [DeleteFlag]) VALUES (4, N'Furniture', N'fur1', 0, CAST(N'2023-12-06T17:19:30.173' AS DateTime), 0, CAST(N'2023-12-06T23:37:56.193' AS DateTime), 0)
+GO
+INSERT [dbo].[TBL_Master_AssetCategory] ([AssetCategoryId], [AssetCategoryName], [Description], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate], [DeleteFlag]) VALUES (5, N'Air Conditioner', N'AC', 0, CAST(N'2023-12-06T23:36:41.027' AS DateTime), NULL, NULL, NULL)
+GO
 SET IDENTITY_INSERT [dbo].[TBL_Master_AssetCategory] OFF
 GO
 SET IDENTITY_INSERT [dbo].[TBL_Master_AssetSubCategory] ON 
@@ -135,7 +140,79 @@ INSERT [dbo].[TBL_Master_AssetSubCategory] ([AssetSubCategoryId], [AssetCategory
 GO
 SET IDENTITY_INSERT [dbo].[TBL_Master_AssetSubCategory] OFF
 GO
-/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_GetAll]    Script Date: 05-12-2023 21:58:59 ******/
+/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_Activate]    Script Date: 06-12-2023 23:41:19 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+create PROCEDURE [dbo].[USP_Master_AssetCategory_Activate]
+	@AssetCategoryId int
+	,@UpdatedBy int
+AS
+BEGIN
+	UPDATE [dbo].[TBL_Master_AssetCategory]
+	SET DeleteFlag=0
+      ,[UpdatedBy] =@UpdatedBy
+      ,[UpdatedDate] = GETDATE()
+ WHERE [AssetCategoryId]=@AssetCategoryId;
+END
+GO
+/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_Add]    Script Date: 06-12-2023 23:41:19 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[USP_Master_AssetCategory_Add]
+	@AssetCategoryName varchar(100)
+    ,@Description nvarchar(500)
+	,@CreatedBy int
+AS
+BEGIN
+	INSERT INTO [dbo].[TBL_Master_AssetCategory]
+           ([AssetCategoryName]
+           ,[Description]
+           ,[CreatedBy]
+           ,[CreatedDate])
+     VALUES
+           (@AssetCategoryName
+           ,@Description
+           ,@CreatedBy
+           ,GetDate());
+END
+GO
+/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_Deactivate]    Script Date: 06-12-2023 23:41:19 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+create PROCEDURE [dbo].[USP_Master_AssetCategory_Deactivate]
+	@AssetCategoryId int
+	,@UpdatedBy int
+AS
+BEGIN
+	UPDATE [dbo].[TBL_Master_AssetCategory]
+	SET DeleteFlag=1
+      ,[UpdatedBy] =@UpdatedBy
+      ,[UpdatedDate] = GETDATE()
+ WHERE [AssetCategoryId]=@AssetCategoryId;
+END
+GO
+/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_GetAll]    Script Date: 06-12-2023 23:41:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -146,7 +223,7 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[USP_Master_AssetCategory_GetAll]
-	
+	@ShowDeactivated bit
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -162,10 +239,12 @@ BEGIN
       ,[UpdatedDate]
       ,[DeleteFlag]
   FROM [dbo].[TBL_Master_AssetCategory]
-
+  WHERE @ShowDeactivated IS NULL OR (@ShowDeactivated IS NOT NULL AND (@ShowDeactivated=1 OR(ISNULL([TBL_Master_AssetCategory].DeleteFlag,0)=@ShowDeactivated)))
+  ORDER BY [AssetCategoryName] ASC;
+  
 END
 GO
-/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_GetById]    Script Date: 05-12-2023 21:58:59 ******/
+/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_GetById]    Script Date: 06-12-2023 23:41:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -196,7 +275,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_GetByName]    Script Date: 05-12-2023 21:58:59 ******/
+/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_GetByName]    Script Date: 06-12-2023 23:41:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -227,7 +306,32 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[USP_Master_AssetSubCategory_GetAll]    Script Date: 05-12-2023 21:58:59 ******/
+/****** Object:  StoredProcedure [dbo].[USP_Master_AssetCategory_Update]    Script Date: 06-12-2023 23:41:19 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+create PROCEDURE [dbo].[USP_Master_AssetCategory_Update]
+	@AssetCategoryId int,
+	@AssetCategoryName varchar(100)
+    ,@Description nvarchar(500)
+	,@UpdatedBy int
+AS
+BEGIN
+	UPDATE [dbo].[TBL_Master_AssetCategory]
+	SET [AssetCategoryName] = @AssetCategoryName
+      ,[Description] = @Description
+      ,[UpdatedBy] =@UpdatedBy
+      ,[UpdatedDate] = GETDATE()
+ WHERE [AssetCategoryId]=@AssetCategoryId;
+END
+GO
+/****** Object:  StoredProcedure [dbo].[USP_Master_AssetSubCategory_GetAll]    Script Date: 06-12-2023 23:41:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
