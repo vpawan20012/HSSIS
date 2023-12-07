@@ -43,7 +43,7 @@ export class AssetCategoryEditComponent extends BaseComponent implements OnInit 
             if (response.isSuccess == false) {
               super.handleResponseError(response);
             } else {
-              super.showSnackBarInfo(response.responseMessage.message);
+              super.showSnackBarSucces(response.responseMessage.message);
               this.dialogRef.close({ event: 'Update' });
             }
           },

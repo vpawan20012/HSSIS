@@ -44,11 +44,11 @@ export class AssetCategoryComponent extends BaseComponent implements OnInit {
   }
 
   override ngOnInit(): void {
-    
+    this.loadAssetCategories();
   }
 
   ngAfterViewInit() {
-    this.loadAssetCategories();
+    
   }  
 
   loadAssetCategories(): void {

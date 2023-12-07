@@ -80,3 +80,18 @@
         </mat-paginator>
     </div>
 </div>
+<!-- <div>
+    <mat-form-field class="form-field-full-width" appearance="outline">
+        <mat-label>Project</mat-label>
+        <mat-select mapImput formControlName="ProjectId" placeholder="Project">
+            <mat-option [value]="0">-Select-</mat-option>
+            <mat-option *ngFor="let project of projectList" [value]="project.projectIdEncrypted">
+                {{project.projectName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-error>
+        <span
+            *ngIf="newProjectSMSQuotaForm.get('ProjectId')?.invalid && newProjectSMSQuotaForm.get('ProjectId')?.touched">Please
+            Please select Project</span>
+    </mat-error>
+</div> -->
