@@ -1,41 +1,29 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "adminlte.min.css";
 /* You can add global styles to this file, and also import other style files */
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+html,
+body {
+  height: 100%;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
 }
 
-code {
-  color: #e01a76;
+.content-wrapper {
+  background-color: #e1e8f3 !important;
 }
 
-.btn-primary {
+.main-header {
+  background-color: #158CBA !important;
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
 }
 
-.grid-edit-icon {
-  font-size: 18px;
-  color: blue;
-  cursor: pointer;
-}
-
-.grid-delete-icon {
-  font-size: 18px;
-  color: red;
-  cursor: pointer;
-}
-
-.grid-activate-icon {
-  font-size: 18px;
-  color: green;
-  cursor: pointer
+.page-header {
+  background-color: #e1e8f3 !important;
+  color: #fff;
 }
 
 .mat-dialog-title {
@@ -71,45 +59,10 @@ code {
   transform: rotate(180deg);
 }
 
-.form-field-full-width {
-  width: 100%;
-}
-
-.textarea-input-status {
-  font-size: 10pt;
-  font-style: italic;
-}
-
-.swal2-html-container .message-details {
-  height: 100px;
-  overflow: auto;
-  border: solid 1px #ccc;
-  font-size: 10px;
-  color: red;
-  text-align: left;
-}
-
-.grid-no-record-found-message {
-  padding: 10px;
-}
-
-.grid-no-record-found-message-icon {
-  color: orange;
-  padding-top: 5px;
-}
-
-.content-wrapper {
-  background-color: #e1e8f3 !important;
-}
-
-.main-header {
-  background-color: #158CBA !important;
-  color: #fff;
-}
-
-.page-header {
-  background-color: #e1e8f3 !important;
-  color: #fff;
+::ng-deep .icon-outside .close-button {
+  float: right;
+  top: -52px;
+  right: -52px;
 }
 
 .mat-dialog-container {
@@ -181,12 +134,31 @@ code {
   font-weight: 100;
 }
 
+
 table {
   width: 100%;
 }
 
 .content-spacer {
   flex: 1 1 auto;
+}
+
+.grid-edit-icon {
+  font-size: 18px;
+  color: blue;
+  cursor: pointer;
+}
+
+.grid-delete-icon {
+  font-size: 18px;
+  color: red;
+  cursor: pointer;
+}
+
+.grid-activate-icon {
+  font-size: 18px;
+  color: green;
+  cursor: pointer;
 }
 
 .pull-right {
