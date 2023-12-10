@@ -1,0 +1,19 @@
+.width-column-sno{
+    max-width: 8%;
+}
+
+.width-column-subcategoryname{
+    max-width: 20%;
+}
+.width-column-categoryname{
+    max-width: 15%;
+}
+.width-column-description{
+    max-width: 40%;
+}
+.width-column-active{
+    max-width: 5%;
+}
+.width-column-actions{
+    max-width: 10%;
+}

@@ -13,4 +13,6 @@ PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng g c modules/master
 PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> npm install sweetalert2
 PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng generate service services/core-services/message-service/message  
 PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng generate service services/core-services/progress-indicator-service/progress.indicator 
-PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> npm i angular-admin-lte --force
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng g c modules/master/asset-sub-category
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng g c modules/master/asset-sub-category/asset-sub-category-add
+PS D:\Development\MyProjects\HSSIS\HSSIS.Web.UI\ClientApp> ng g c modules/master/asset-sub-category/asset-sub-category-edit

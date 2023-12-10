@@ -21,15 +21,10 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 export class AssetCategoryComponent extends BaseComponent implements OnInit {
   showDeactivatedOptionForm: FormGroup;
   assetCategories: MatTableDataSource<AssetCategoryDataModel>;
-  //@ViewChild('paginator') paginator: MatPaginator | null = null;
-  // @ViewChild('MatSort') set matSort(sort: MatSort) {
-  //   this.assetCategories.sort = sort;
-  // }
-
   @ViewChild('paginator') paginator: MatPaginator | null = null;
   @ViewChild('sorter') sorter = new MatSort();
-
   displayedColumns: string[] = ['SerialNumber', 'assetCategoryName', 'description', 'Active', 'Actions'];
+  
   constructor(public messageService: MessageService,
     private masterDataService: MasterDataService,
     private matDialog: MatDialog,
@@ -46,11 +41,7 @@ export class AssetCategoryComponent extends BaseComponent implements OnInit {
   override ngOnInit(): void {
     this.loadAssetCategories();
   }
-
-  ngAfterViewInit() {
-    
-  }  
-
+  
   loadAssetCategories(): void {
     var show: boolean = this.showDeactivatedOptionForm.value.showDeactivated != null && this.showDeactivatedOptionForm.value.showDeactivated == true;
     this.masterDataService.getAllAssetCategories(show)

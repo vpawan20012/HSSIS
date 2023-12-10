@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>
+    <div class="dialog-title-text">
+        {{title}}</div>
+    <div class="dialog-title-loader" *ngIf="showProgressIndicator">
+        <mat-spinner [diameter]="30" *ngIf="progressIndicatorService.visibility | async">
+        </mat-spinner>
+    </div>
+    <div class="dialog-title-command" *ngIf="showCloseButton">
+        <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+        </button>
+    </div>
+    <div style="clear: both;"></div>
+</h1>

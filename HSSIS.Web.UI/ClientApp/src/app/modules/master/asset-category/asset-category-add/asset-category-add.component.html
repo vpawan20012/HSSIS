@@ -1,13 +1,16 @@
-<h1 mat-dialog-title>
-    <div class="dialog-title-text">
+  <!--<h1 mat-dialog-title>
+   <div class="dialog-title-text">
         Add Asset Category</div>
     <div class="dialog-title-command">
         <button mat-icon-button class="close-button" [mat-dialog-close]="true">
             <mat-icon class="close-icon" color="warn">close</mat-icon>
         </button>
     </div>
-    <div style="clear: both;"></div>
-</h1>
+    <div style="clear: both;"></div>    
+</h1> -->
+<div>
+    <app-popup-header title="Add Asset Category"></app-popup-header>
+</div>
 <form [formGroup]="newAssetCategoryForm" (ngSubmit)="onSaveAssetCategory(newAssetCategoryForm)">
     <mat-dialog-content>
         <div>

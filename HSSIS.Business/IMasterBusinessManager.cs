@@ -15,7 +15,6 @@ namespace HSSIS.Business
         
         Task<HttpResponseViewModel<IList<AssetCategoryModel>>> GetAllAssetCategories(bool showDeactivated);
         Task<HttpResponseViewModel<AssetCategoryModel>> GetAssetCategoryById(int assetCategoryId);
-        //Task<HttpResponseViewModel<AssetCategoryModel>> GetAssetCategoryByName(string assetCategoryName);
         Task<HttpResponseViewModel<int>> AddAssetCategory(AssetCategoryModel assetCategory);
         Task<HttpResponseViewModel<int>> UpdateAssetCategory(AssetCategoryModel assetCategory);
         Task<HttpResponseViewModel<int>> DeactivateAssetCategory(AssetCategoryModel assetCategory);
@@ -24,7 +23,12 @@ namespace HSSIS.Business
 
         #region Asset Sub Category
 
-        Task<HttpResponseViewModel<IList<AssetSubCategoryViewModel>>> GetAllAssetSubCategories(int assetCategoryId);
+        Task<HttpResponseViewModel<IList<AssetSubCategoryViewModel>>> GetAllAssetSubCategories(int assetCategoryId, bool showDeactivated);
+        Task<HttpResponseViewModel<AssetSubCategoryModel>> GetAssetSubCategoryById(int assetSubCategoryId);
+        Task<HttpResponseViewModel<int>> AddAssetSubCategory(AssetSubCategoryModel assetSubCategory);
+        Task<HttpResponseViewModel<int>> UpdateAssetSubCategory(AssetSubCategoryModel assetSubCategory);
+        Task<HttpResponseViewModel<int>> DeactivateAssetSubCategory(AssetSubCategoryModel assetSubCategory);
+        Task<HttpResponseViewModel<int>> ActivateAssetSubCategory(AssetSubCategoryModel assetSubCategory);
         #endregion
     }
 }

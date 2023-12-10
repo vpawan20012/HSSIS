@@ -2,7 +2,7 @@
     <section>
         <mat-toolbar class="page-header">
             <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-                <mat-icon>route</mat-icon>
+                <mat-icon>description</mat-icon>
             </button>
             <span>Asset Categories</span>
             <span class="pl-medium">
@@ -20,8 +20,8 @@
             <div style="clear: both;"></div>
         </mat-toolbar>
     </section>
-    <div class="mat-elevation-z8">
-        <section class="border-solid-gray" style="margin-top: 10px;">
+    <div class="mat-elevation-z8 page-content">
+        <section class="border-solid-gray">
             <mat-table [dataSource]="assetCategories" class="mat-elevation-z8" matSort 
             (matSortChange)="onSortingChange($event)" #sorter="matSort">
                 <ng-container matColumnDef="SerialNumber">

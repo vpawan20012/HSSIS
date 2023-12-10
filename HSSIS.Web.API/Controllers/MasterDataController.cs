@@ -78,12 +78,46 @@ namespace HSSIS.Web.API.Controllers
 
 
         [HttpGet]
-        [Route("GetAllAssetSubCategories/{assetCategoryId}")]
-        public async Task<ActionResult<HttpResponseViewModel<IList<AssetSubCategoryViewModel>>>> GetAllAssetSubCategories(int assetCategoryId)
+        [Route("GetAllAssetSubCategories")]
+        public async Task<ActionResult<HttpResponseViewModel<IList<AssetSubCategoryViewModel>>>> GetAllAssetSubCategories(int assetCategoryId,bool showDeactivated)
         {
-            return await this.masterBusinessManager.GetAllAssetSubCategories(assetCategoryId);
+            return await this.masterBusinessManager.GetAllAssetSubCategories(assetCategoryId,showDeactivated);
         }
 
+        [HttpGet]
+        [Route("GetAssetSubCategoryById")]
+        public async Task<ActionResult<HttpResponseViewModel<AssetSubCategoryModel>>> GetAssetSubCategoryById(int assetSubCategoryId)
+        {
+            return await this.masterBusinessManager.GetAssetSubCategoryById(assetSubCategoryId);
+        }
+
+        [HttpPost]
+        [Route("AddAssetSubCategory")]
+        public async Task<ActionResult<HttpResponseViewModel<int>>> AddAssetSubCategory(AssetSubCategoryModel assetSubCategory)
+        {
+            return await this.masterBusinessManager.AddAssetSubCategory(assetSubCategory);
+        }
+
+        [HttpPost]
+        [Route("UpdateAssetSubCategory")]
+        public async Task<ActionResult<HttpResponseViewModel<int>>> UpdateAssetSubCategory(AssetSubCategoryModel assetSubCategory)
+        {
+            return await this.masterBusinessManager.UpdateAssetSubCategory(assetSubCategory);
+        }
+
+        [HttpPost]
+        [Route("DeactivateAssetSubCategory")]
+        public async Task<ActionResult<HttpResponseViewModel<int>>> DeactivateAssetSubCategory(AssetSubCategoryModel assetSubCategory)
+        {
+            return await this.masterBusinessManager.DeactivateAssetSubCategory(assetSubCategory);
+        }
+
+        [HttpPost]
+        [Route("ActivateAssetSubCategory")]
+        public async Task<ActionResult<HttpResponseViewModel<int>>> ActivateAssetSubCategory(AssetSubCategoryModel assetSubCategory)
+        {
+            return await this.masterBusinessManager.ActivateAssetSubCategory(assetSubCategory);
+        }
         #endregion
 
         [HttpGet]

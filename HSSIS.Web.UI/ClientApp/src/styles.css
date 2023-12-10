@@ -13,7 +13,8 @@ body {
 }
 
 .content-wrapper {
-  background-color: #e1e8f3 !important;
+  /* background-color: #e1e8f3 !important; */
+  background-color: #fff !important;
 }
 
 .main-header {
@@ -24,7 +25,13 @@ body {
 .page-header {
   background-color: #e1e8f3 !important;
   color: #fff;
+  border-bottom: solid 1px #ccc;
 }
+
+.page-content {
+  margin: 20px;
+}
+
 
 .mat-dialog-title {
   background-color: #e1e8f3 !important;
@@ -417,4 +424,19 @@ display: block;
 .dashboard-widget .widget-footer
 {
   display: block;
+}
+
+mat-header-cell
+{
+    text-align: center!important;
+}
+
+.card-body{
+  padding: 0px!important;
+  background-color: #fff!important;
+}
+
+.white-background
+{
+  background-color: #fff!important;
 }

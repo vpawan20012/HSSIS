@@ -5,14 +5,14 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AngularMaterialModule } from 'src/app/angular.material.module';
 import { RouterModule } from '@angular/router';
-
-
+import { PopupHeaderComponent } from './popup-header/popup-header.component';
 
 @NgModule({
   declarations: [
     LeftNavMenuComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PopupHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
   exports:[
     LeftNavMenuComponent,
     HeaderComponent,
+    PopupHeaderComponent
   ]
 })
 export class SharedModule { }

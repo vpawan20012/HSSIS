@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>
+<!-- <h1 mat-dialog-title>
     <div class="dialog-title-text">
         Edit Asset Category
     </div>
@@ -12,7 +12,10 @@
         </button>
     </div>
     <div style="clear: both;"></div>
-</h1>
+</h1> -->
+<div>
+    <app-popup-header title="Edit Asset Category"></app-popup-header>
+</div>
 <form [formGroup]="editAssetCategoryForm" (ngSubmit)="onSaveAssetCategory(editAssetCategoryForm)">
     <mat-dialog-content>
         <div>

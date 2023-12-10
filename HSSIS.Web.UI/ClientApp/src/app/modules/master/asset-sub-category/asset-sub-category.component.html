@@ -1,0 +1,108 @@
+<div class="card-body">
+    <section>
+        <mat-toolbar class="page-header">
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <mat-icon>account_tree</mat-icon>
+            </button>
+            <span>Asset Subcategories</span>
+            <span class="pl-medium">
+                <mat-spinner [diameter]="30" *ngIf="progressIndicatorService.visibility | async">
+                </mat-spinner>
+            </span>
+            <span class="content-spacer"></span>
+            <section class="show-deactivated-section" [formGroup]="showDeactivatedOptionForm">
+                <div class="fl">
+                    <mat-form-field class="form-field-full-width" style="margin-top: 25px;" appearance="outline">
+                        <mat-label>Asset Category</mat-label>
+                        <mat-select mapImput formControlName="assetCategoryId" placeholder="Asset Category" (selectionChange)="onFilterSelectionChange($event)">
+                            <mat-option [value]="0">-All-</mat-option>
+                            <mat-option *ngFor="let assetCategory of assetCategories"
+                                [value]="assetCategory.assetCategoryId">
+                                {{assetCategory.assetCategoryName}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="fl ml-medium">
+                    <mat-checkbox style="margin-top: 37px;" formControlName="showDeactivated"
+                        (change)="onFilterSelectionChange($event)">Show
+                        Deactivated
+                    </mat-checkbox>
+                </div>
+                <div class="clear"></div>
+            </section>
+            <button mat-raised-button color="primary" class="fr ml-medium" (click)="onAssetSubCategoryAdd()">
+                <mat-icon>add_circle</mat-icon>
+                Add Subcategory</button>
+            <div style="clear: both;"></div>
+        </mat-toolbar>
+    </section>
+    <div class="mat-elevation-z8 page-content">
+        <section class="border-solid-gray">
+            <mat-table [dataSource]="assetSubCategories" class="mat-elevation-z8" matSort
+                (matSortChange)="onSortingChange($event)" #sorter="matSort">
+                <ng-container matColumnDef="SerialNumber">
+                    <mat-header-cell *matHeaderCellDef [ngClass]="'width-column-sno'">
+                        S.
+                        No.</mat-header-cell>
+                    <mat-cell *matCellDef="let element; let i = index;" [ngClass]="'width-column-sno'">
+                        {{ (i+1) + (paginator.pageIndex* paginator.pageSize) }}
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="assetSubCategoryName">
+                    <mat-header-cell *matHeaderCellDef [ngClass]="'width-column-subcategoryname'" mat-sort-header>
+                        Subcategory
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" [ngClass]="'width-column-subcategoryname'">
+                        {{element.assetSubCategoryName}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef [ngClass]="'width-column-description'">
+                        Description
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" [ngClass]="'width-column-description'">
+                        {{element.description}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="assetCategoryName">
+                    <mat-header-cell *matHeaderCellDef [ngClass]="'width-column-categoryname'" mat-sort-header>
+                        Category
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" [ngClass]="'width-column-categoryname'">
+                        {{element.assetCategoryName}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Active">
+                    <mat-header-cell *matHeaderCellDef [ngClass]="'width-column-active'"> Active
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" [ngClass]="'width-column-active'">
+                        <mat-checkbox [checked]="element.isActive" disabled></mat-checkbox>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Actions">
+                    <mat-header-cell *matHeaderCellDef [ngClass]="'width-column-actions'">
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" [ngClass]="'width-column-actions'">
+                        <span *ngIf="element.isActive === true">
+                            <mat-icon class="grid-edit-icon" (click)="onEditAssetSubCategory(element.assetSubCategoryId)">
+                                edit</mat-icon>
+                            <mat-icon class="grid-delete-icon"
+                                (click)="onDeactivateAssetSubCategory(element.assetSubCategoryId)">delete</mat-icon>
+                        </span>
+                        <span *ngIf="element.isActive === false">
+                            <mat-icon class="grid-activate-icon"
+                                (click)="onActivateAssetSubCategory(element.assetSubCategoryId)">check_circle</mat-icon>
+                        </span>
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></mat-header-row>
+                <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <div *ngIf="assetSubCategories.data.length==0" class="grid-no-record-found-message">
+                <mat-icon class="grid-no-record-found-message-icon">warning</mat-icon>
+                No records found
+            </div>
+            <mat-paginator #paginator [length]="10" [pageSizeOptions]="[10, 20, 30,50,100]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </section>
+    </div>
+</div>
+<!--  -->

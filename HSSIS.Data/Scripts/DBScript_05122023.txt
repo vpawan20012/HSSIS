@@ -75,6 +75,8 @@ EXEC sys.sp_db_vardecimal_storage_format N'HSSIS_DB', N'ON'
 GO
 ALTER DATABASE [HSSIS_DB] SET QUERY_STORE = OFF
 GO
+USE HSSIS_DB;
+GO
 /****** Object:  Table [dbo].[TBL_Master_AssetCategory]    Script Date: 06-12-2023 23:41:18 ******/
 SET ANSI_NULLS ON
 GO

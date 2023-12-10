@@ -1,12 +1,13 @@
 <aside class="main-sidebar sidebar-light-primary elevation-4">
     <div
         class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition">
-
+        <!-- <div class="brand-link">
+            <img src="./src/assets/Doit_Logo.png" />
+        </div> -->
         <mat-nav-list class="side-navnar nav nav-pills nav-sidebar flex-column">
             <mat-list-item [routerLink]="'home'" [routerLinkActive]="['link-active']">
                 <mat-icon class="nav-icon">home</mat-icon> Home
             </mat-list-item>
-
             <mat-expansion-panel [class.mat-elevation-z0]="true" [expanded]="true">
                 <mat-expansion-panel-header>
                     <mat-icon mat-list-icon>storage</mat-icon>Master Data
@@ -15,7 +16,7 @@
                     <mat-list-item [routerLink]="'assetcategory'" [routerLinkActive]="['link-active']">
                         <mat-icon class="nav-icon">description</mat-icon> Asset Category
                     </mat-list-item>
-                    <mat-list-item [routerLink]="'assetcategory'" [routerLinkActive]="['link-active']">
+                    <mat-list-item [routerLink]="'assetsubcategory'" [routerLinkActive]="['link-active']">
                         <mat-icon class="nav-icon">account_tree</mat-icon> Asset Subcategory
                     </mat-list-item>
                 </mat-nav-list>

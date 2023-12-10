@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AssetCategoryComponent } from './modules/master/asset-category/asset-category.component';
+import { AssetSubCategoryComponent } from './modules/master/asset-sub-category/asset-sub-category.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   //{ path: 'counter', component: CounterComponent },
   { path: 'assetcategory', component: AssetCategoryComponent },
+  { path: 'assetsubcategory', component: AssetSubCategoryComponent },
 ];
 
 
